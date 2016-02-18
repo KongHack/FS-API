@@ -73,7 +73,7 @@ class Manager
         $result = curl_exec($ch);
         curl_close($ch);
 
-        return $result;
+        return unserialize($result);
     }
 
     /**
