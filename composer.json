@@ -8,12 +8,12 @@
     }
   ],
   "repositories": [
-    {"type": "composer", "url": "http://toran.mhchosts.com/repo/packagist/"},
-    {"type": "composer", "url": "http://toran.mhchosts.com/repo/private/"},
+    {"type": "composer", "url": "http://toran.konghack.com/app.php/repo/private/"},
+    {"type": "composer", "url": "http://toran.konghack.com/app.php/repo/packagist/"},
     {"packagist": false}
   ],
   "autoload": {
-    "psr-4": {"MHC\\FSAPI\\": "src/"}
+    "psr-4": {"GCWorld\\FSAPI\\": "src/"}
   },
   "require": {
     "php":">=5.6",
