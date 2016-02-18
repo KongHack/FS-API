@@ -40,22 +40,25 @@ class Manager
     /**
      * @param string $name
      * @param string $location
-     * @param null   $type
+     * @param null   $mime
      * @param null   $size
      * @return mixed
      * @throws \Exception
      */
-    public function putFile($name, $location, $type = null, $size = null)
+    public function putFile($name, $location, $mime)
     {
+        $location = realpath($location);
         if (!file_exists($location)) {
-            throw new \Exception('File does not exist at the specified location');
+            throw new \Exception('File does not exist at the specified location: '.$location);
         }
+
+        $cFile = new \CURLFile($location,$mime,$name);
 
         $post = [
             'name' => $name,
-            'type' => $type,
-            'size' => $size,
-            'file' => '@'.$location
+            'mime' => $mime,
+            'size' => filesize($location),
+            'file' => $cFile
         ];
 
         $ch = curl_init();
@@ -64,7 +67,8 @@ class Manager
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Service-Token: '.$this->api_key
+            'Service-Token: '.$this->api_key,
+            'Content-Type: multipart/form-data',
         ]);
         $result = curl_exec($ch);
         curl_close($ch);
