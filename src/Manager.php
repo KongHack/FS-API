@@ -28,8 +28,8 @@ class Manager
             $host = $config['host'];
         }
 
-        $host = rtrim($host,'/');
-        if(substr($host,0,4) != 'http') {
+        $host = rtrim($host, '/');
+        if (substr($host, 0, 4) != 'http') {
             $host = 'http://'.$host;
         }
 
@@ -40,8 +40,8 @@ class Manager
     /**
      * @param string $name
      * @param string $location
-     * @param null $type
-     * @param null $size
+     * @param null   $type
+     * @param null   $size
      * @return mixed
      * @throws \Exception
      */
@@ -52,10 +52,10 @@ class Manager
         }
 
         $post = [
-            'name'  => $name,
-            'type'  => $type,
-            'size'  => $size,
-            'file'  => '@'.$location
+            'name' => $name,
+            'type' => $type,
+            'size' => $size,
+            'file' => '@'.$location
         ];
 
         $ch = curl_init();
@@ -90,6 +90,4 @@ class Manager
 
         return $result;
     }
-
-
 }
