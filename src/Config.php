@@ -25,6 +25,9 @@ class Config
         if (!isset($config['api_key'])) {
             throw new Exception('Config does not contain "api_key" value!');
         }
+        if (!isset($config['host'])) {
+            throw new Exception('Config does not contain "host" value!');
+        }
 
         // Get the example config, make sure we have all variables.
         $example = rtrim(dirname(__FILE__), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR;
