@@ -25,7 +25,7 @@ class ComposerInstaller
             $example = file_get_contents($myDir.$ds.'..'.$ds.'config'.$ds.'config.example.ini');
             file_put_contents($iniPath.'FSAPI.ini', $example);
         }
-        file_put_contents($myDir.$ds.'..'.$ds.'config'.$ds.'config.ini', 'config_path='.$iniPath.'GCWorld_ORM.ini');
+        file_put_contents($myDir.$ds.'..'.$ds.'config'.$ds.'config.ini', 'config_path='.$iniPath.'FSAPI.ini');
         return true;
     }
 }
