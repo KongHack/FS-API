@@ -1,10 +1,10 @@
 {
-  "name": "mhc/fs-api",
+  "name": "gcworld/fs-api",
   "description": "File Storage API",
   "authors": [
     {
-      "name": "Mitch",
-      "email": "mitch.dodge@mhc.org"
+      "name": "GameCharmer",
+      "email": "admin@gamecharmer.com"
     }
   ],
   "repositories": [
@@ -22,7 +22,7 @@
   },
   "scripts": {
     "post-autoload-dump": [
-      "MHC\\FSAPI\\ComposerInstaller::setupConfig"
+      "GCWorld\\FSAPI\\ComposerInstaller::setupConfig"
     ]
   },
   "license":"proprietary"

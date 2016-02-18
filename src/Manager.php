@@ -1,5 +1,5 @@
 <?php
-namespace MHC\FSAPI;
+namespace GCWorld\FSAPI;
 
 class Manager
 {
