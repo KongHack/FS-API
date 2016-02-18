@@ -1,0 +1,29 @@
+{
+  "name": "mhc/fs-api",
+  "description": "File Storage API",
+  "authors": [
+    {
+      "name": "Mitch",
+      "email": "mitch.dodge@mhc.org"
+    }
+  ],
+  "repositories": [
+    {"type": "composer", "url": "http://toran.mhchosts.com/repo/packagist/"},
+    {"type": "composer", "url": "http://toran.mhchosts.com/repo/private/"},
+    {"packagist": false}
+  ],
+  "autoload": {
+    "psr-4": {"MHC\\FSAPI\\": "src/"}
+  },
+  "require": {
+    "php":">=5.6",
+    "composer/composer": "1.0.*@dev",
+    "composer/installers": "1.0.*@dev"
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "MHC\\FSAPI\\ComposerInstaller::setupConfig"
+    ]
+  },
+  "license":"proprietary"
+}
