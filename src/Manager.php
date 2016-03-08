@@ -8,6 +8,7 @@ class Manager
 
     CONST SUFFIX_PUT = '/put';
     CONST SUFFIX_GET = '/get/';
+    CONST SUFFIX_DELETE = '/delete/';
 
     /**
      * Manager constructor.
@@ -52,7 +53,7 @@ class Manager
             throw new \Exception('File does not exist at the specified location: '.$location);
         }
 
-        $cFile = new \CURLFile($location,$mime,$name);
+        $cFile = new \CURLFile($location, $mime, $name);
 
         $post = [
             'name' => $name,
@@ -84,6 +85,25 @@ class Manager
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->host.self::SUFFIX_GET.$fileToken);
+        curl_setopt($ch, CURLOPT_POST, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Service-Token: '.$this->api_key
+        ]);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        return unserialize($result);
+    }
+
+    /**
+     * @param $fileToken
+     * @return mixed
+     */
+    public function deleteFile($fileToken)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $this->host.self::SUFFIX_DELETE.$fileToken);
         curl_setopt($ch, CURLOPT_POST, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
